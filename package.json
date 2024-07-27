@@ -1,0 +1,56 @@
+{
+  "name": "tiny-fuzzy-search",
+	"type": "module",
+  "version": "0.0.1",
+  "description": "A tiny fuzzy search library",
+  "main": "dist/index.js",
+	"types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "watch": "npm run build -- --watch src",
+    "prepublishOnly": "npm run build",
+    "lint": "tsc",
+    "test": "vitest",
+    "verify-commit": "verify-commit-msg",
+    "prepare": "git-scm-hooks",
+    "release": "bumpp -r && npm publish",
+    "playground": "vite playground",
+    "build:playground": "vite build playground",
+    "preview": "vite preview --outDir ./public"
+  },
+  "keywords": [
+    "fuzzy",
+    "search",
+    "tiny"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "hunghg255",
+  "license": "ISC",
+  "devDependencies": {
+    "bumpp": "^9.2.1",
+    "git-scm-hooks": "^0.0.7",
+    "sass": "^1.77.8",
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4",
+    "verify-commit-msg": "^0.0.10",
+    "vite": "^5.3.5"
+  },
+  "git-hooks": {
+    "pre-commit": "npm run lint",
+    "commit-msg": "npm run verify-commit"
+  }
+}
